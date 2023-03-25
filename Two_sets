@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define eb emplace_back
+#define nline "\n"
+#define ll long long int
+
+/********************************************************/
+int main(){
+	ll n,k;
+    cin>>n;
+    if ((n*(n+1))%4!=0){cout<<"NO"<<endl;}
+
+    else{
+    	cout<<"YES"<<endl;
+    	vector<ll>v1;
+    	vector<ll>v2;
+    	v1.eb(n);
+    	ll target=((n*(n+1))/4)-n;
+    	for (ll i=n-1;i>=1;i--){
+    		if (target>i){
+    			v1.eb(i);
+    			target-=i;
+    		} else{
+    			if (target==i){v1.eb(i);target=0;}
+    			else{v2.eb(i);}
+    		}
+
+    		   	}
+        ll m=v1.size(),n=v2.size();
+        cout<<m<<endl;
+    	for(ll i=v1.size()-1;i>=0;i--){cout<<v1[i]<<" ";}
+        cout<<endl;
+        cout<<n<<endl;
+    	for(ll i=v2.size()-1;i>=0;i--){cout<<v2[i]<<" ";}
+        cout<<endl;
+    }
+
+}
