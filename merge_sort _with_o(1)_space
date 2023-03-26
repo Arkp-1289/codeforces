@@ -1,0 +1,55 @@
+MERGE SORT WITH O(1) SPACE WITH ****GAP METHOD****
+
+#include<bits/stdc++.h>
+using namespace std;
+#define eb emplace_back
+#define nline "\n"
+#define ll long long int
+/*******************/
+void solve(vector<int>&v1,vector<int>&v2,int n,int m){
+int i,j;
+int gap=ceil((float)(n+m)/2);                       // create gap and iterate untill gap becomes 0
+while (gap>0){
+    i=0;
+	j=gap;
+	while (j<(n+m)){
+		if (i<n && j<n && v1[i]>v1[j]){
+			swap(v1[i],v1[j]);
+		}
+		else if (i<n && j>=n && v1[i]>v2[j-n]){
+			swap(v1[i],v2[j-n]);
+		}
+		else if(i>=n && j>=n && v2[i-n]>v2[j-n]) {
+			swap(v2[i-n],v2[j-n]);
+		}
+		i++;
+		j++;
+	}
+	if (gap==1){
+		gap=0;
+	} else{
+		gap=ceil((float)gap/2);
+	}
+}
+}
+int main(){
+	int n,m;
+	cin>>n>>m;
+	vector<int>v1(n);
+	vector<int>v2(m);
+	for (int i=0;i<n;i++){cin>>v1[i];}
+	for (int i=0;i<m;i++){cin>>v2[i];}
+	for (auto i:v1){cout<<i<<" ";}
+	cout<<endl;
+	for (auto i:v2){cout<<i<<" ";}
+	cout<<endl;
+	cout<<"After sort: "<<endl;
+	solve(v1,v2,n,m);
+	for (auto i:v1){cout<<i<<" ";}
+	cout<<endl;
+	for (auto i:v2){cout<<i<<" ";}
+    
+
+
+
+}
