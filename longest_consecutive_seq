@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        set<int>hashset;                
+        for (auto i:nums){hashset.insert(i);}
+        int res=0;
+        for (auto i:nums){
+            if (!hashset.count(i-1)){
+                int streak=1,num=i;
+                while(hashset.count(num+1)){
+                    streak++;
+                    num++;
+                }
+                res=max(res,streak);
+            }
+        }
+        return res;
+    }
+};
+
+
+
+/****************/
+--> CREATE A HASHSET
+--> ITERATE THE NUMS ARRAY AND IF NUMS[I-1] FOUND IN HASHSET THEN IGNORE 
+--> ELSE CHECK FOR I+1,I+2....UNTILL WE CANT FOUND IN HASHSET 
+-->COUNT THE MAX IN EVERY SEQUENCE AND RETURN
