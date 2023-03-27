@@ -1,0 +1,27 @@
+#include <bits/stdc++.h> 
+#include <bits/stdc++.h> 
+int subarraysXor(vector<int> &arr, int x)
+{
+    //    Write your code here.
+    int xr=0,c=0;
+    map<int,int>mp;              
+    for(int i=0;i<arr.size();i++){
+        xr=xr^arr[i];
+        if (xr==x){c+=1;}
+        int t=xr^x;
+        if (mp.find(t)!=mp.end()){
+            c+=mp[t];
+
+        }
+        mp[xr]+=1;
+    }
+    return c;
+}
+
+
+/**************/
+  Y^K=X then Y=X^K
+  we have to find the number of y is in the array 
+ we taken the hash map for prefix xor 
+ and check with xr^x whether in hashmap present or not 
+ 
