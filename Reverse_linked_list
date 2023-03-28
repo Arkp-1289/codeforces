@@ -1,0 +1,24 @@
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev=NULL;
+        ListNode * current=head;
+        ListNode * next;
+        while(current){
+            next=current->next;
+            current->next=prev;
+            prev=current;
+            current=next;
+        }
+        return prev;
+    }
+};
+
+
+/***************/
+ HERE IT INVOLVES TAKING 3 POINTERS  PREV,CURRENT,NEXT
+ PREV=NULL
+ CURRENT=HEAD
+ WE HAVE TO ITERATE UNTILL CURRENT BECOMES NULL
+ AND CHANGING CURRET AND PREV VALUES WITH THE HELP OF NEXTV VALUE
+ 
